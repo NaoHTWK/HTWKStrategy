@@ -8,6 +8,8 @@ Introduction
 This is the official NaoTeam HTWK teamstrategy as used in the RoboCup 2016 in Leipzig. We included the strategy itself and an emulator to test it with up to five robots and a ball.
 The emulator can be used via drag and drop of robots and the ball. The strategy itself is based on an blackboard AI idea.
 
+The strategy is the implementation of the [graduation work of Florian Mewes (in german)](http://robocup.imn.htwk-leipzig.de/documents/BA_Florian_Mewes.pdf?lang=en).
+
 Prerequisites
 -------------
 
@@ -21,7 +23,7 @@ We tested the release with this sw packages (all from Ubuntu 16.04)
 How to Build
 ------------
 
-Build it like any other CMake project. 
+Build it like any other CMake project.
 
 Nice to know facts
 ------------------
