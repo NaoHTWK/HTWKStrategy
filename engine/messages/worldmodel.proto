@@ -1,0 +1,85 @@
+package protobuf.worldmodel;
+
+// This file contains the description of our worldmodel which is send from 
+// the firmware to infocast and from there to the world.
+
+option java_package = "de.htwk_leipzig.naocontrol.backend.internal.protobuf.worldmodel";
+option java_outer_classname = "WorldModelProtos";
+
+message Point2D {
+    required float x = 1;
+    required float y = 2;
+}
+
+enum BallPrecision {
+    NONE               = 0;
+    LONG_INTERPOLATION = 1;
+    INTERPOLATION      = 2;
+    NORMAL             = 3;
+    FOOT_INTERPOLATION = 4;
+    FOOT_MEASUREMENT   = 5;
+}
+
+message RelativeBall {
+    required BallPrecision precision = 1;
+    required Point2D pos             = 2;
+    required Point2D filteredPos     = 3;
+    required float filterPrecision   = 4;
+    required float positionVariance  = 5;
+    required Point2D filteredSpeed   = 6;
+}
+
+message BallCandidate {
+    required RelativeBall ball              = 1;
+    required uint32 numFramesSinceFirstSeen = 2;
+    required uint32 numFramesSeenIn         = 3;
+}
+
+message LocationInfo {
+    required float x    = 1;
+    required float y    = 2;
+    required float a    = 3;
+    required float qual = 4;
+}
+
+message Position {
+    required float x = 1;
+    required float y = 2;
+    required float a = 3;
+}
+
+message Teamball {
+    required float x    = 1;
+    required float y    = 2;
+    required float qual = 3;
+}
+
+message MoveBallOrder {
+    required Point2D pos = 1;
+}
+
+message WalkToPositionOrder {
+    required Position pos = 1;
+    required bool useA    = 2;
+}
+
+message MoveBallGoalOrder {
+    required float y = 1;
+}
+
+message Order {
+    required string name = 1;
+    optional MoveBallOrder moveBallOrder = 2;
+    optional WalkToPositionOrder walkToPositionOrder = 3;
+    optional MoveBallGoalOrder moveBallGoalOrder = 4;
+}
+
+message Robot {
+    required RelativeBall ball        = 1;
+    required BallCandidate candidate  = 2;
+    required LocationInfo pos         = 3;
+    required string agent = 4;
+    required Order order  = 5;
+    required uint32 pid   = 6; /* Duplicate detection */
+    required uint64 time  = 7; /* Duplicate detection */
+}

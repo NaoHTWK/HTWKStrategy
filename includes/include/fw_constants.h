@@ -1,0 +1,9 @@
+#ifndef _FW_CONSTANTS_
+#define _FW_CONSTANTS_
+
+#define WM_NUM_PLAYERS 5
+#define DCM_HEARTBEAT_NMQ_SOCK_NAME "DCM_HEARTBEAT"
+
+#define FIELD_LENGTH (9.0f)
+#define FIELD_WIDTH (6.0f)
+#endif
